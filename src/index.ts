@@ -171,12 +171,12 @@ class ADCPlatform implements DynamicPlatformPlugin {
                   this.addPartition(d);
                 } else if (realDeviceType === 'sensor') {
                   this.addSensor(d);
-                } else if (realDeviceType === 'light') {
-                  this.addLight(d);
                 } else if (realDeviceType === 'lock') {
                   this.addLock(d);
                 } else if (realDeviceType === 'garage-door') {
                   this.addGarage(d);
+                } else if (realDeviceType === 'light') {
+                  this.addLight(d);
                 }
                 // add more devices here as available, ie. garage doors, etc
 
@@ -264,16 +264,16 @@ class ADCPlatform implements DynamicPlatformPlugin {
         return systemStates.reduce((out, system) => {
           out.partitions = out.partitions.concat(system.partitions);
           out.sensors = out.sensors.concat(system.sensors);
-          out.lights = out.lights.concat(system.lights);
           out.locks = out.locks.concat(system.locks);
           out.garages = out.garages.concat(system.garages);
+          out.lights = out.lights.concat(system.lights);
           return out;
         }, {
           partitions: [],
           sensors: [],
-          lights: [],
           locks: [],
-          garages: []
+          garages: [],
+          lights: []
         });
       });
   }
